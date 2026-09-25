@@ -1,0 +1,14 @@
+services:
+  app:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: sqlite:////app/data/document_intelligence.db
+      STORAGE_DIR: /app/data/uploads
+      MAX_UPLOAD_MB: 5
+    volumes:
+      - document_data:/app/data
+
+volumes:
+  document_data:
