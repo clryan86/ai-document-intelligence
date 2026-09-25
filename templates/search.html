@@ -1,0 +1,5 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="hero compact"><p class="eyebrow">Knowledge search</p><h1>Results for “{{ query }}”</h1><p class="lead">{{ hits|length }} ranked passage{% if hits|length != 1 %}s{% endif %}</p></section>
+<div class="stack result-stack">{% for hit in hits %}<article class="panel result"><div class="result-head"><a href="/documents/{{ hit.document_id }}"><strong>{{ hit.filename }}</strong></a><span class="score">{{ '%.0f'|format(hit.score * 100) }}% match</span></div><p>{{ hit.text }}</p></article>{% else %}<div class="empty">No relevant passages found. Try a broader phrase.</div>{% endfor %}</div>
+{% endblock %}
