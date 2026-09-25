@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="hero compact"><p class="eyebrow">Document #{{ document.id }}</p><h1>{{ document.filename }}</h1><p class="lead">{{ document.byte_size }} bytes • {{ document.text_content.split()|length }} words • {{ document.chunks|length }} searchable chunks</p></section>
+<section class="grid two"><div class="panel"><h2>Extractive summary</h2><p class="reading">{{ intelligence.summary }}</p></div><div class="panel"><h2>Keywords</h2><div class="tags">{% for keyword in intelligence.keywords %}<span class="tag">{{ keyword }}</span>{% endfor %}</div></div></section>
+<section class="panel"><h2>Extracted text preview</h2><pre class="document-text">{{ document.text_content[:5000] }}</pre></section>
+{% endblock %}
